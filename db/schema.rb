@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008093322) do
+ActiveRecord::Schema.define(version: 20151009110920) do
+
+  create_table "cards", force: :cascade do |t|
+    t.string   "word"
+    t.string   "definition"
+    t.string   "sentence"
+    t.string   "token",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "cards", ["token"], name: "index_cards_on_token", unique: true
 
   create_table "decks", force: :cascade do |t|
     t.string   "token"
